@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>school</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+
+</head>
+<style type="text/css">
+	#container{
+		text-align: center;
+		margin-top: 50%;
+	}
+	input{
+		width: 200px;
+		height: 30px;
+	}
+	button{
+		width: 200px;
+		height: 30px;
+		border: solid lightgreen 2px ;
+		background: lightgreen;
+		color: black;
+		border-radius: 5px;
+	}
+	p{
+		font-size: 12px;
+	}
+@media only screen and (min-width:500px){
+	#container{
+		text-align: center;
+		margin-top: 20%;
+	}
+}
+</style>
+<body>
+<div id="container">
+<form method="post">
+	{% csrf_token %}
+	<input type="text" id="otp" name="otp" placeholder=" Enter OTP"><br> <br>
+	<button>next</button><br><br>
+	<p>The OTP sent to the phone number<br> which you give in school</p><br>
+</form>
+</div>
+</body>
+</html>

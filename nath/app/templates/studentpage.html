@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>student-{{s_name}}</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+
+</head>
+<style type="text/css">
+	#marks-div{
+		width: 100%;
+		height: 500px;
+		overflow: scroll;
+		display: flex;
+		flex-direction: column;
+		justify-items: center;
+
+
+	}
+	body{
+		font-style: italic;
+		background: white;
+
+	}
+	#marks-inner-div{
+		border: solid white 2px;
+		border-radius: 10px;
+		box-shadow: 1px  1px 5px 0px black;
+		margin-top: 30px;
+		text-align: center;
+		
+		margin-right: 20px;
+		margin-left: 20px;
+		
+
+	}
+	a{
+		
+		float: right;
+		text-decoration: none;
+		-webkit-tap-highlight-color: transparent;
+
+			}
+	#creators{
+		border: solid black 2px ;
+		background: black;
+		color: white;
+		text-align: center;
+	}
+</style>
+<body>
+	
+
+<h1>{{s_name.stu_name}}</h1>
+<p>class-{{s_name.stu_class}}</p>
+<p>Roll No-{{s_name.roll_num}}</p>
+<div id="marks-div">
+	{% for i in marks %}<br><br><br>
+	<div id="marks-inner-div">
+		 <strong>LWRT    -  {{i.test_num}}</strong><br><br>
+		 telugu  -  {{i.telugu}}/{{i.ta}}<br>
+		 maths   -  {{i.maths}}/{{i.ma}}<br>
+		 hindi   -  {{i.hindi}}/{{i.ha}}<br>
+		 english -  {{i.english}}/{{i.ea}}<br>
+		 physics -  {{i.physic}}/{{i.pa}}<br>
+		 biology -  {{i.biology}}/{{i.ba}}<br>
+		 social  -  {{i.social}}/{{i.sa}}<br>
+		 sanskrit-  {{i.sanskrit}}/{{i.sana}}<br>
+		 total   -  {{i.total}}<br>
+		 percent -  {{i.percent}}%<br>
+		</div>
+
+	{% endfor %}
+</div><br><br><br>
+<div id="creators">
+	<p>Created by:<p>Santhosh pulime<br>Hemanth Kollu</p></p>
+
+	</div>
+</body>
+</html>

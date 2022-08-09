@@ -1,0 +1,172 @@
+#inner-container-div{
+display: flex;
+
+
+}
+#stu-form-div{
+	margin-left: 20px;
+	margin-top: 10px;
+}
+#student-add-form{
+	border: solid white 2px;
+	width: 300px;
+	display: grid;
+	justify-items: center;
+	box-shadow: 5px 5px 10px  black;
+	border-radius: 5px;
+}
+#stu_name{
+	width:250px;
+	height: 30px;
+}
+#phonenumber{
+	width:250px;
+	height: 30px;
+}
+#roll_num{
+	width:250px;
+	height: 30px;
+}
+#add-form-btn{
+	border: solid black 2px;
+	border-radius: 5px;
+	background: black;
+	color: white;
+	width:250px;
+	height: 30px;
+}
+
+
+/*students names showing */
+#students-container{
+	border: solid 2px white;
+	width: 270px;
+	height: 400px;
+	overflow: scroll;
+	margin-top: 10px;
+	margin-left: 40px;
+	scroll-behavior: smooth;
+	border-radius: 5px;
+	margin-right: 100px;
+	box-shadow: 5px 5px 10px  black;
+
+}
+#show-students{
+	
+	margin-left: 6%;
+	border: solid 2px white;
+	border-radius: 2px;
+
+	color: black;
+	margin-top: 10px;
+	width: 220px;
+	box-shadow: 2px 2px 50px 50px whitesmoke;
+	font-size: 17px;
+
+}
+
+#del-btn{
+	border: solid 2px red;
+	border-radius: 5px;
+	background: red;
+	width: 60px;
+	height: 30px;
+	font-size: 17px;
+}
+#edit-btn{
+	border: solid 2px green;
+	border-radius: 5px;
+	background: green;
+	margin-left: 10px;
+	width: 60px;
+	height: 30px;
+	font-size: 17px;
+}
+
+#addmarks{
+	border: solid 2px lightblue;
+	border-radius: 5px;
+	background: lightblue;
+	margin-left: 10px;
+	width: 60px;
+	height: 30px;
+	font-size: 17px;
+}
+body{
+	font-family: monospace;
+	
+}
+/* marks show div*/
+#stu-marks-show{
+	border: solid white 2px;
+	margin-left: 100px;
+	width: 300px;
+	height: 500px;
+	overflow: scroll;
+	box-shadow: 1px 1px 10px  black;
+	font-family: monospace;
+
+}
+#edit-marks{
+	border: solid green 2px ;
+	border-radius: 2px;
+	background: green;
+	color: white;
+	width: 60px;
+	height: 30px;
+}
+#del-marks{
+	border: solid red 2px ;
+	border-radius: 2px;
+	background: red;
+	color: white;
+	width: 60px;
+	height: 30px;
+	margin-left: 20px;
+}
+/*marks add div*/
+#add-marks-container{
+	
+border: solid 2px white;
+width: 300px;
+height: 600px;
+
+box-shadow: 1px 1px 10px  black;
+
+
+
+}
+
+#marks-inner-div{
+	float: right;
+	margin-right: 50px;
+}
+#lwrt{
+	margin-left: 25%;
+}
+input{
+	width: 50px;
+	height: 25px;
+
+}
+
+
+
+
+
+
+/*search bar*/
+#search-div{
+	border: solid 2px gray;
+	background: gray;
+	padding-left: 100px;
+	padding-bottom: 10px;
+	border-radius: 6px;
+	margin: 10px ;
+}
+#search{
+	width: 200px;
+	height: 25px;
+	margin-top: 10px;
+
+}

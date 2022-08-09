@@ -1,0 +1,1097 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>students</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="">
+</head>
+
+
+
+
+
+<style type="text/css">
+	#inner-container-div{
+display: flex;
+
+
+}
+#stu-form-div{
+	margin-left: 20px;
+	margin-top: px;
+}
+/*student form*/
+#student-add-form{
+	border: solid white 2px;
+	width: 300px;
+	height: 250px;
+	display: grid;
+	justify-items: center;
+	box-shadow: 5px 5px 10px  black;
+	border-radius: 5px;
+	m
+}
+#stu_name{
+	width:250px;
+	height: 20px;
+}
+#phonenumber{
+	width:250px;
+	height: 20px;
+}
+#roll_num{
+	width:250px;
+	height: 20px;
+}
+#add-form-btn{
+	border: solid black 2px;
+	border-radius: 5px;
+	background: black;
+	color: white;
+	width:250px;
+	height: 30px;
+}
+
+
+/*students names showing */
+#students-container{
+	border: solid 2px white;
+	width: 270px;
+	height: 400px;
+	overflow: scroll;
+	margin-top: 10px;
+	margin-left: 40px;
+	scroll-behavior: smooth;
+	border-radius: 5px;
+	margin-right: 100px;
+	box-shadow: 5px 5px 10px  black;
+
+}
+#show-students{
+	
+	margin-left: 6%;
+	border: solid 2px white;
+	border-radius: 2px;
+
+	color: black;
+	margin-top: 10px;
+	width: 220px;
+	box-shadow: 2px 2px 50px 50px whitesmoke;
+	font-size: 17px;
+
+}
+
+#del-btn{
+	border: solid 1px salmon;
+	border-radius: 5px;
+	background: white;
+	width: 60px;
+	height: 30px;
+	font-size: 17px;
+}
+#del-btn:hover{
+	background: red;
+}
+
+#edit-btn{
+	border: solid 1px lightgreen;
+	border-radius: 5px;
+	background: white;
+	margin-left: 10px;
+	width: 60px;
+	height: 30px;
+	font-size: 17px;
+}
+#edit-btn:hover{
+	background: lightgreen;
+}
+
+
+#addmarks{
+	border: solid 1px lightblue;
+	border-radius: 5px;
+	background: white;
+	margin-left: 10px;
+	width: 60px;
+	height: 30px;
+	font-size: 17px;
+}
+#addmarks:hover{
+	background: lightblue;
+}
+body{
+	font-family: monospace;
+	
+}
+/* marks show div*/
+#stu-marks-show{
+	border: solid white 2px;
+	margin-left: 100px;
+	width: 300px;
+	height: 500px;
+	overflow: scroll;
+	box-shadow: 1px 1px 10px  black;
+	font-family: monospace;
+
+}
+#edit-marks{
+	border: solid lightgreen 2px ;
+	border-radius: 3px;
+	background: white;
+	color: black;
+	width: 60px;
+	height: 30px;
+}
+#edit-marks:hover{
+	background: lightgreen;
+}
+#del-marks{
+	border: solid salmon 1px ;
+	border-radius: 3px;
+	background: white;
+	color: black;
+	width: 60px;
+	height: 30px;
+	margin-left: 20px;
+}
+#del-marks:hover{
+	background: red;
+}
+/*marks add div*/
+#add-marks-container{
+	
+border: solid 2px white;
+width: 300px;
+height: 600px;
+margin-right: 20px;
+box-shadow: 1px 1px 10px  black;
+
+
+
+}
+
+#marks-inner-div{
+	float: right;
+	margin-left: 70px;
+}
+#lwrt{
+	margin-left: 25%;
+}
+input{
+	width: 50px;
+	height: 25px;
+
+}
+
+
+
+
+
+
+/*search bar*/
+#search-div{
+	border: solid 2px gray;
+	background: gray;
+	padding-left: 100px;
+	padding-bottom: 10px;
+	border-radius: 6px;
+	margin: ;
+}
+#search{
+	width: 200px;
+	height: 25px;
+	margin-top: 10px;
+
+}
+#add-form-btn-marks{
+	width: 200px;
+	margin-left: 20px;
+
+}
+#no-container{
+	display: flex;
+}
+button{
+	border: solid black 1px;
+	border-radius: 2px;
+	background: white;
+
+}
+button:hover{
+	background: black;
+	color: white;
+}
+</style>
+
+
+
+
+
+
+
+
+<body>
+	<div id="container">
+		<div id="search-div">
+			<input type="text" id="search" placeholder="Search Students">
+			
+		</div><br><br><br>
+
+<div id="inner-container-div">
+	<div id="students-div-for-down">
+<div id="stu-form-div">
+	<form id="student-add-form" method="post">
+	<h2>class:{{i.c}}</h2><br>
+	{% csrf_token %}
+
+	<input type="hidden" id="s_id_id">
+		<input type="hidden" id="class" placeholder="class" value="{{i.c}}">
+	<input type="text" id="stu_name" placeholder="Student Name"><br>
+
+	<input type="hidden" id="phonenumber" placeholder="Phone Number" value="1"><br>
+	<input type="text" id="roll_num" placeholder="Roll Number"><br>
+	<input type="hidden" name="password" id="password" value="1">
+	<button id="add-form-btn">Add</button>
+	<p id='problem-in-adding-student'></p>
+	</form>
+</div>
+
+<div id="students-container">
+	<h1>students</h1>
+	<p id="loading-stuname"></p>
+</div>
+</div>
+<br><br>
+{% csrf_token %}
+<div id="add-marks-container" >
+	<div id="no-container">
+	<button id="t-no">T No</button>
+	<button id="h-no">H No</button>
+	<button id="m-no">M No</button>
+	<button id="e-no">E No</button>
+	<button id="p-no">P No</button>
+	<button id="b-no">B No</button>
+	<button id="s-no">S No</button>
+	<button id="sa-no">SA No</button><br>
+	
+	<input type="hidden" id="tno-input">
+	<input type="hidden" id="hno-input">
+	<input type="hidden" id="eno-input">
+	<input type="hidden" id="mno-input">
+	<input type="hidden" id="pno-input">
+	<input type="hidden" id="bno-input">
+	<input type="hidden" id="sno-input">
+	<input type="hidden" id="sano-input">
+</div>
+<p id="no-p"></p>
+	<form method="post" id="add-marks-form">
+		<h2 id="stu-name-display"></h2><br>
+		{% csrf_token %}
+		<p id="total_marks_show">total:</p>
+		<p id="total_percent_show">Percent:</p>
+		<input type="hidden" placeholder="markid" id="marks_id">
+		<input type="hidden" id="stu_id" placeholder="id">
+		<input type="hidden" id="stuname" placeholder="Student Name">
+		<input type="text" id="lwrt" placeholder="LWRT"><br><br>
+
+<div id="marks-inner-div">
+		<input type="text" id="telugu" placeholder="Telugu"><br><br>
+		<input type="text" id="hindi" placeholder="Hindi"><br><br>
+		<input type="text" id="maths" placeholder="Maths"><br><br>
+		<input type="text" id="english" placeholder="English"><br><br>
+		<input type="text" id="physics" placeholder="Physics"><br><br>
+		<input type="text" id="biology" placeholder="Biology"><br><br>
+		<input type="text" id="social" placeholder="Social"><br><br>
+		<input type="text" id="sanskrit" placeholder="Sanskrit"><br><br>
+	
+
+</div>
+		<input type="text" id="ta" placeholder="Allot Tel"><br><br>
+		<input type="text" id="ma" placeholder="Allot Math"><br><br>
+		<input type="text" id="ha" placeholder="Allot Hin"><br><br>
+		<input type="text" id="ea" placeholder="Allot Eng"><br><br>
+		<input type="text" id="pa" placeholder="Allot Phy"><br><br>
+		<input type="text" id="ba" placeholder="Allot Bio"><br><br>
+		<input type="text" id="sa" placeholder="Allot Soc"><br><br>
+		<input type="text" id="sana" placeholder="Allot San"><br><br>
+			<button id="add-form-btn-marks">Add</button>
+		<input type="hidden" id="total" placeholder="Total"><br><br>
+		<input type="hidden" id="percent" placeholder="Percent"><br><br>
+		<input type="hidden" id="t_s_m">
+		
+		
+		
+
+	
+	</form>
+
+</div>
+<div id="stu-marks-show">
+	<p id="loading-stumarks"></p>
+</div>
+
+</div>
+</div>
+</body>
+<script type="text/javascript">
+	$('#no-container').on('click','#t-no',function(){
+		$('#tno-input').val('t')
+		$('#ta').val('')
+		document.getElementById('no-p').innerHTML='Telugu removed'
+		
+	})
+
+	$('#no-container').on('click','#h-no',function(){
+		$('#hno-input').val('h')
+		$('#ha').val('')
+		document.getElementById('no-p').innerHTML='Hindi removed'
+
+	})
+
+	$('#no-container').on('click','#sa-no',function(){
+		$('#sano-input').val('sa')
+		$('#sana').val('')
+		document.getElementById('no-p').innerHTML='Sanskrit removed'
+	})
+
+	$('#no-container').on('click','#e-no',function(){
+		$('#eno-input').val('e')
+		$('#ea').val('')
+		document.getElementById('no-p').innerHTML='English removed'
+	})
+
+
+	$('#no-container').on('click','#m-no',function(){
+		$('#mno-input').val('m')
+		$('#ma').val('')
+		document.getElementById('no-p').innerHTML='Maths removed'
+	})
+
+
+	$('#no-container').on('click','#p-no',function(){
+		$('#pno-input').val('p')
+		$('#pa').val('')
+		document.getElementById('no-p').innerHTML='Physics removed'
+	})
+
+
+	$('#no-container').on('click','#b-no',function(){
+		$('#bno-input').val('b')
+		$('#ba').val('')
+		document.getElementById('no-p').innerHTML='Biology removed'
+	})
+
+	$('#no-container').on('click','#s-no',function(){
+		$('#sno-input').val('s')
+		$('#sa').val('')
+		document.getElementById('no-p').innerHTML='Sanskrit removed'
+	})
+</script>
+<script type="text/javascript">
+
+//adding students into database and signup      
+	$(document).on('submit','#student-add-form',function(e){
+		e.preventDefault();
+		$.ajax({
+			type:'POST',
+			url:'/addstudent',
+			beforeSend:function(){
+				$('#loading-stuname').text('loading..')
+			},
+			data:{
+				s_id:$('#s_id_id').val(),
+				stu_name:$('#stu_name').val(),
+				stu_class:$('#class').val(),
+				phonenumber:$('#phonenumber').val(),
+				roll_num:$('#roll_num').val(),
+				password:$('#password').val(),
+				csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+
+			},
+			success:function(data){
+				
+			
+
+
+				if (data.successed=='Student Name added successfully'){
+				document.getElementById("problem-in-adding-student").innerHTML=data.successed;
+			}
+				$('#roll_num').val('')
+				$('#phonenumber').val('')
+				
+				$('#stu_name').val('')
+
+
+				$('#students-container').empty()
+				var temp=''
+				for (var i in data.students){
+					temp = '<div id="show-students"><p>'
+					+data.students[i].stu_name+
+					'</p><input value="delete" type="button" id="del-btn" data-sid='
+					+data.students[i].id+
+					'><input value="edit" type="button" id="edit-btn" data-sid='
+					+data.students[i].id+
+					'><input value="Add" type="button" id="addmarks" data-sid='
+					+data.students[i].id+
+					'></div>'
+
+					$('#students-container').append(temp)
+				}
+			}
+		})
+	})
+
+
+
+</script>
+
+
+<script type="text/javascript">
+//show students on click
+	$(document).on('click','#students-container',function(e){
+		e.preventDefault();
+		$.ajax({
+			type:'POST',
+			url:'/show_students_data_mouse_click',
+			beforeSend:function(){
+				$('#loading-stuname').text('loading..')
+			},
+			data:{
+				
+				stu_class:$('#class').val(),
+				csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+			},
+			success:function(data){
+				console.log(data.students)
+				$('#students-container').empty()
+				var temp=''
+				for (var i in data.students){
+					temp = '<div id="show-students"><p>'
+					+data.students[i].stu_name+
+					'</p><input value="delete" type="button" id="del-btn" data-sid='
+					+data.students[i].id+
+					'><input value="edit" type="button" id="edit-btn" data-sid='
+					+data.students[i].id+
+					'><input value="Add" type="button" id="addmarks" data-sid='
+					+data.students[i].id+
+					'></div>'
+
+					$('#students-container').append(temp)
+				}
+
+			}
+			
+		})
+	})
+</script>
+
+<script type="text/javascript">
+// add marks for students
+$('#students-container').on('click','#addmarks',function(){
+	var id = $(this).attr('data-sid')
+	console.log(id)
+	let csf= $('input[name=csrfmiddlewaretoken]').val()
+	mydata = {sid:id,csrfmiddlewaretoken:csf}	
+	$.ajax({
+		type:'POST',
+		url:'/get_stu_data_to_marks',
+		data:{
+			sid:$(this).attr('data-sid'),
+			csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+		},
+
+		success:function(data){
+			console.log(data.id)
+			$('#stu_id').val(data.id)
+			$('#stuname').val(data.stu_name)
+			document.getElementById("stu-name-display").innerHTML=data.stu_name;
+
+		}
+		})
+	
+	})
+
+</script>
+
+<script type="text/javascript">
+//save students marks 
+$(document).on('submit','#add-marks-form',function(e){
+	e.preventDefault();
+	tel_b = $('#telugu').val()
+	maths=$('#maths').val(),
+	english=$('#english').val(),
+	hindi=$('#hindi').val(),
+	physics=$('#physics').val(),
+	biology=$('#biology').val(),
+	sanskrit=$('#sanskrit').val(),
+	social=$('#social').val(),
+	tnoinput=$('#tno-input').val(),
+	hnoinput=$('#hno-input').val(),
+	enoinput=$('#eno-input').val(),
+	mnoinput=$('#mno-input').val(),
+	snoinput=$('#sno-input').val(),
+	bnoinput=$('#bno-input').val(),
+	pnoinput=$('#pno-input').val(),
+	sanoinput=$('#sano-input').val()
+
+	if (tel_b==''){
+		$('#telugu').val('abs')
+		$('#ta').val('')
+			}
+	if (maths==''){
+		$('#maths').val('abs')
+		$('#ma').val('')
+			}
+	if (hindi==''){
+		$('#hindi').val('abs')
+		$('#ha').val('')
+			}
+	if (english==''){
+		$('#english').val('abs')
+		$('#ea').val('')
+			}
+	if (physics==''){
+		$('#physics').val('abs')
+		$('#pa').val('')
+			}
+	if (biology==''){
+		$('#biology').val('abs')
+		$('#ba').val('')
+			}
+	if (social==''){
+		$('#social').val('abs')
+		$('#sa').val('')
+			}
+	if (sanskrit==''){
+		$('#sanskrit').val('abs')
+		$('#sana').val('')
+			}
+
+
+	//null 
+	if (tnoinput=='t'){
+		$('#telugu').val('no')
+
+	}
+
+
+	if (hnoinput=='h'){
+		$('#hindi').val('no')
+
+	}
+
+
+	if (mnoinput=='m'){
+		$('#maths').val('no')
+
+	}
+
+
+	if (enoinput=='e'){
+		$('#english').val('no')
+
+	}
+
+
+	if (sanoinput=='sa'){
+		$('#sanskrit').val('no')
+
+	}
+
+
+	if (pnoinput=='p'){
+		$('#physics').val('no')
+
+	}
+
+
+	if (bnoinput=='b'){
+		$('#biology').val('no')
+
+	}
+
+
+	if (snoinput=='s'){
+		$('#social').val('no')
+
+	}
+
+	
+	
+
+	$.ajax({
+		type:'POST',
+		url:'/save_student_marks',
+		beforeSend:function(){
+				$('#add-form-btn-marks').text('saving..')
+			},
+		data:{
+			id:$('#marks_id').val(),
+			stu_id:$('#stu_id').val(),
+			stu_name:$('#stuname').val(),
+			lwrt:$('#lwrt').val(),
+			telugu:$('#telugu').val(),
+			maths:$('#maths').val(),
+			english:$('#english').val(),
+			hindi:$('#hindi').val(),
+			physics:$('#physics').val(),
+			biology:$('#biology').val(),
+			sanskrit:$('#sanskrit').val(),
+			social:$('#social').val(),
+			total:$('#total').val(),
+			percent:$('#percent').val(),
+			sa:$('#sa').val(),
+			ta:$('#ta').val(),
+			ma:$('#ma').val(),
+			ha:$('#ha').val(),
+			ea:$('#ea').val(),
+			pa:$('#pa').val(),
+			ba:$('#ba').val(),
+			sana:$('#sana').val(),
+			csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+		},
+		success:function(data){
+			
+			console.log(data.stu_marks)
+
+			
+				$('#add-form-btn-marks').text('Add')
+
+
+			$('#stu-marks-show').empty()
+				var temp=''
+				for(var i in data.stu_marks){
+					temp += '<div id="students_marks"><p>'
+					+'LWRT:'+data.stu_marks[i].test_num+
+					'</p><p>'
+					+'Telugu:'+data.stu_marks[i].telugu+'/'+data.stu_marks[i].ta+
+					'</p><p>'+'Maths:'+data.stu_marks[i].maths+'/'+data.stu_marks[i].ma+
+					'</p><p>'+'English:'+data.stu_marks[i].english+'/'+data.stu_marks[i].ea+
+					'</p><p>'+'Hindi:'+data.stu_marks[i].hindi+'/'+data.stu_marks[i].ha+
+					'</p><p>'+'Physics:'+data.stu_marks[i].physic+'/'+data.stu_marks[i].pa+
+					'</p><p>'+'Biology:'+data.stu_marks[i].biology+'/'+data.stu_marks[i].ba+
+					'</p><p>'+'Social:'+data.stu_marks[i].social+'/'+data.stu_marks[i].sa+
+					'</p><p>'+'Sanskrit:'+data.stu_marks[i].sanskrit+'/'+data.stu_marks[i].sana+
+					'</p><input type="button" value="Edit" id="edit-marks" marks-id='+data.stu_marks[i].id+'><input type="button" value="Delete" id="del-marks" marks-id='+data.stu_marks[i].id+'></div><br><br>';
+					$('#stu-marks-show').empty()
+					$('#stu-marks-show').append(temp)
+
+				}
+
+			$('#marks_id').val(''),
+			
+			
+			$('#lwrt').val(),
+			$('#telugu').val(''),
+			$('#maths').val(''),
+			$('#english').val(''),
+			$('#hindi').val(''),
+			$('#physics').val(''),
+			$('#biology').val(''),
+			$('#sanskrit').val(''),
+			$('#social').val(''),
+			$('#total').val(''),
+			$('#percent').val('')
+
+
+			$('#tno-input').val(''),
+			$('#hno-input').val(''),
+			$('#eno-input').val(''),
+			$('#mno-input').val(''),
+			$('#sno-input').val(''),
+			$('#bno-input').val(''),
+			$('#pno-input').val(''),
+			$('#sano-input').val('')
+		}
+	})
+})
+</script>
+
+<script type="text/javascript">
+	$('body').on('mouseover','#add-marks-form',function(e){
+		csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+
+		e.preventDefault(e);
+		var tel = $('#telugu').val()
+		var math = $('#maths').val()
+		var hin = $('#hindi').val()
+		var eng = $('#english').val()
+		var phy = $('#physics').val()
+		var bio = $('#biology').val()
+		var soc = $('#social').val()
+		var sans = $('#sanskrit').val()
+		var tot = $('#total').val()
+
+
+		var t=tel*1 
+		var m=math*1
+		var h=hin*1
+		var e=eng*1
+		var p=phy*1
+		var b=bio*1
+		var so=soc*1
+		var sa=sans*1
+		var t_t = tot*1
+		var total_marks= t+m+h+e+p+b+so+sa
+		$('#total').val(total_marks)
+
+
+
+		var ta = $('#ta').val()
+		var ma = $('#ma').val()
+		var ha = $('#ha').val()
+		var ea = $('#ea').val()
+		var pa = $('#pa').val()
+		var ba = $('#ba').val()
+		var sa = $('#sa').val()
+		var sana = $('#sana').val()
+		var t=$('#t_s_m').val()
+
+		var t1=ta*1 
+		var m1=ma*1
+		var h1=ha*1
+		var e1=ea*1
+		var p1=pa*1
+		var b1=ba*1
+		var so1=sa*1
+		var sana1=sana*1
+		var tsm=t*1
+		
+
+
+
+		var total_percent = t1+m1+h1+e1+so1+p1+b1+sana1
+		var t=$('#t_s_m').val(total_percent)
+		var percentage = total_marks/total_percent*100
+		
+		$('#percent').val(percentage)
+		$('#t_s_m').val(total_percent)
+		document.getElementById('total_marks_show').innerHTML = 'Total:'+total_marks+'/'+total_percent;
+		document.getElementById('total_percent_show').innerHTML = 'Percent:'+percentage+'/'+'100';
+
+
+	})
+</script>
+
+<script type="text/javascript">
+	$('#students-container').on('click','#addmarks',function(){
+		var id = $(this).attr('data-sid')
+		console.log('clicked')
+		$.ajax({
+			type:'POST',
+			url:'/show_student_marks_for_school',
+			data:{
+				id : $(this).attr('data-sid'),
+				csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+
+			},
+			success:function(data){
+				console.log(data.stu_marks)
+				$('#stu-marks-show').empty()
+				var temp=''
+				for(var i in data.stu_marks){
+					temp += '<div id="students_marks"><p>'
+					+'LWRT:'+data.stu_marks[i].test_num+
+					'</p><p>'
+					+'Telugu:'+data.stu_marks[i].telugu+'/'+data.stu_marks[i].ta+
+					'</p><p>'+'Maths:'+data.stu_marks[i].maths+'/'+data.stu_marks[i].ma+
+					'</p><p>'+'English:'+data.stu_marks[i].english+'/'+data.stu_marks[i].ea+
+					'</p><p>'+'Hindi:'+data.stu_marks[i].hindi+'/'+data.stu_marks[i].ha+
+					'</p><p>'+'Physics:'+data.stu_marks[i].physic+'/'+data.stu_marks[i].pa+
+					'</p><p>'+'Biology:'+data.stu_marks[i].biology+'/'+data.stu_marks[i].ba+
+					'</p><p>'+'Social:'+data.stu_marks[i].social+'/'+data.stu_marks[i].sa+
+					'</p><p>'+'Sanskrit:'+data.stu_marks[i].sanskrit+'/'+data.stu_marks[i].sana+
+					'</p><input type="button" value="Edit" id="edit-marks" marks-id='+data.stu_marks[i].id+'><input type="button" value="Delete" id="del-marks" marks-id='+data.stu_marks[i].id+'></div><br><br>';
+					$('#stu-marks-show').empty()
+					$('#stu-marks-show').append(temp)
+
+				}
+			}
+		})
+	})
+</script>
+
+
+
+<script type="text/javascript">
+//edit marks
+	$('#stu-marks-show').on('click','#edit-marks',function(){
+	var id = $(this).attr('marks-id')
+	console.log(id)
+	$.ajax({
+		type:'POST',
+		url:'/editmarks',
+		data:{
+			mid:id,
+			csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+		},
+		success:function(data){
+		 $('#marks_id').val(data.id)
+		 $('#stu_id').val(data.stu_id)
+
+		 $('#telugu').val(data.telugu)
+		 $('#maths').val(data.maths)
+		 $('#hindi').val(data.hindi)
+		 $('#english').val(data.english)
+		 $('#physics').val(data.physics)
+		 $('#biology').val(data.biology)
+		 $('#social').val(data.social)
+		 $('#sanskrit').val(data.sanskrit)
+		 $('#total').val(data.total)
+		 $('#percent').val(data.percent)
+		 $('#lwrt').val(data.test_num)
+
+		 $('#ta').val(data.ta)
+		 $('#ha').val(data.ha)
+		 $('#ma').val(data.ma)
+		 $('#ea').val(data.ea)
+		 $('#pa').val(data.pa)
+		 $('#ba').val(data.ba)
+		 $('#sa').val(data.sa)
+		 $('#sana').val(data.sana)
+
+		 var tel = $('#telugu').val()
+		var math = $('#maths').val()
+		var hin = $('#hindi').val()
+		var eng = $('#english').val()
+		var phy = $('#physics').val()
+		var bio = $('#biology').val()
+		var soc = $('#social').val()
+		var sans = $('#sanskrit').val()
+		var tot = $('#total').val()
+
+		if (tel=='abs'){
+			$('#telugu').val('')
+		}
+		if (math=='abs'){
+			$('#maths').val('')
+		}
+
+		if (hin=='abs'){
+			$('#hindi').val('')
+		}
+		if (eng=='abs'){
+			$('#english').val('')
+		}
+
+
+		if (phy=='abs'){
+			$('#physics').val('')
+		}
+
+		if (bio=='abs'){
+			$('#biology').val('')
+		}
+
+		if (soc=='abs'){
+			$('#social').val('')
+		}
+
+		if (sans=='abs'){
+			$('#sanskrit').val('')
+		}
+
+
+
+		//null
+
+		if (tel=='no'){
+			$('#telugu').val('')
+		}
+		if (math=='no'){
+			$('#maths').val('')
+		}
+
+		if (hin=='no'){
+			$('#hindi').val('')
+		}
+		if (eng=='no'){
+			$('#english').val('')
+		}
+
+
+		if (phy=='no'){
+			$('#physics').val('')
+		}
+
+		if (bio=='no'){
+			$('#biology').val('')
+		}
+
+		if (soc=='no'){
+			$('#social').val('')
+		}
+
+		if (sans=='no'){
+			$('#sanskrit').val('')
+		}
+
+		}
+	})
+})
+
+
+</script>
+<script>
+// delete marks
+	$('#stu-marks-show').on('click','#del-marks',function(){
+		var id = $(this).attr('marks-id')
+		var stu_id = $('#stu_id').val()
+		console.log(id)
+		let csf= $('input[name=csrfmiddlewaretoken]').val()
+		mydata = {mid:id,csrfmiddlewaretoken:csf,stu_id:stu_id}
+
+		$.ajax({
+			type:'POST',
+			url:'/deletemarks',
+			data:mydata,
+
+			success:function(data){
+				console.log(data)
+				if (data.status=='1'){
+									$('#stu-marks-show').empty()
+				var temp=''
+				for(var i in data.stu_marks){
+					temp += '<div id="students_marks"><p>'
+					+'LWRT:'+data.stu_marks[i].test_num+
+					'</p><p>'
+					+'Telugu:'+data.stu_marks[i].telugu+'/'+data.stu_marks[i].ta+
+					'</p><p>'+'Maths:'+data.stu_marks[i].maths+'/'+data.stu_marks[i].ma+
+					'</p><p>'+'English:'+data.stu_marks[i].english+'/'+data.stu_marks[i].ea+
+					'</p><p>'+'Hindi:'+data.stu_marks[i].hindi+'/'+data.stu_marks[i].ha+
+					'</p><p>'+'Physics:'+data.stu_marks[i].physic+'/'+data.stu_marks[i].pa+
+					'</p><p>'+'Biology:'+data.stu_marks[i].biology+'/'+data.stu_marks[i].ba+
+					'</p><p>'+'Social:'+data.stu_marks[i].social+'/'+data.stu_marks[i].sa+
+					'</p><p>'+'Sanskrit:'+data.stu_marks[i].sanskrit+'/'+data.stu_marks[i].sana+
+					'</p><input type="button" value="Edit" id="edit-marks" marks-id='+data.stu_marks[i].id+'><input type="button" value="Delete" id="del-marks" marks-id='+data.stu_marks[i].id+'></div><br><br>';
+					$('#stu-marks-show').empty()
+					$('#stu-marks-show').append(temp)
+
+				}
+				}
+
+		}
+	})
+	})
+
+
+
+</script>
+
+
+<script type="text/javascript">
+//delete student
+	$('#students-container').on('click','#del-btn',function(){
+		var id = $(this).attr('data-sid')
+		var stu_c = $('#class').val()
+		let csf= $('input[name=csrfmiddlewaretoken]').val()
+		mydata = {sid:id,csrfmiddlewaretoken:csf,stu_c:stu_c}
+		$.ajax({
+			type:'POST',
+			url:'/deletestudent',
+			data:mydata,
+			success:function(data){
+				if (data.status==1){
+
+				$('#students-container').empty()
+				var temp=''
+				for (var i in data.students){
+					temp = '<div id="show-students"><p>'
+					+data.students[i].stu_name+
+					'</p><input value="delete" type="button" id="del-btn" data-sid='
+					+data.students[i].id+
+					'><input value="edit" type="button" id="edit-btn" data-sid='
+					+data.students[i].id+
+					'><input value="Add" type="button" id="addmarks" data-sid='
+					+data.students[i].id+
+					'></div>'
+
+					$('#students-container').append(temp)
+				}
+				
+				}
+
+			}
+		})
+	})
+
+
+//editing student
+	$('#students-container').on('click','#edit-btn',function(){
+		var id = $(this).attr('data-sid')
+
+		
+		let csf= $('input[name=csrfmiddlewaretoken]').val()
+		mydata = {sid:id,csrfmiddlewaretoken:csf}
+		console.log('edit',id)
+		$.ajax({
+			type:'POST',
+			url:'/editstudent',
+			data:mydata,
+			success:function(data){
+				console.log(data)
+				$('#s_id_id').val(data.id)
+				$('#stu_id').val(data.id)
+				$('#stu_name').val(data.stu_name),
+				$('#roll_num').val(data.roll_num),
+				$('#class').val(data.stu_class),
+				$('#phonenumber').val(data.phonenumber)
+			}
+		})	
+	})
+
+
+</script>
+
+<script type="text/javascript">
+	$('#add-marks-form').on('keyup','#ta',function(){
+		ta = $('#ta').val()
+		$('#ta').val(ta)
+		$('#ma').val(ta)
+		$('#ha').val(ta)
+		$('#ea').val(ta)
+		$('#pa').val(ta)
+		$('#ba').val(ta)
+		$('#sa').val(ta)
+		$('#sana').val(ta)
+	})
+
+//search 
+$(document).on('keyup','#search',function(e){
+	e.preventDefault();
+	$.ajax({
+		type:'POST',
+		url:'/search',
+		data:{
+			'search':$('#search').val(),
+			'stu_class':$('#class').val(),
+			csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+		},
+			success:function(data){
+				
+					$('#students-container').empty()
+				var temp=''
+				for (var i in data.students){
+					temp = '<div id="show-students"><p>'
+					+data.students[i].stu_name+
+					'</p><input value="delete" type="button" id="del-btn" data-sid='
+					+data.students[i].id+
+					'><input value="edit" type="button" id="edit-btn" data-sid='
+					+data.students[i].id+
+					'><input value="Add" type="button" id="addmarks" data-sid='
+					+data.students[i].id+
+					'></div>'
+
+					$('#students-container').append(temp)
+				}
+
+			
+		}
+	})
+})
+</script>
+</html>
